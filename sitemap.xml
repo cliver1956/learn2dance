@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://learn2dancesandy.co.uk/</loc>
+  <lastmod>2019-02-26T11:43:47+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://learn2dancesandy.co.uk/about.html</loc>
+  <lastmod>2019-02-24T12:09:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://learn2dancesandy.co.uk/dances.html</loc>
+  <lastmod>2019-02-26T11:43:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://learn2dancesandy.co.uk/gallery.html</loc>
+  <lastmod>2019-02-24T12:09:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://learn2dancesandy.co.uk/contact.html</loc>
+  <lastmod>2019-02-24T12:25:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://learn2dancesandy.co.uk/social.html</loc>
+  <lastmod>2019-02-24T12:09:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://learn2dancesandy.co.uk/index.html</loc>
+  <lastmod>2019-02-26T11:43:47+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
