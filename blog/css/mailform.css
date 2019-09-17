@@ -1,0 +1,607 @@
+/*
+* @section Contact Form
+*/
+/*
+* @subsection MF
+*/
+.mailform {
+  position: relative;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+}
+.mailform fieldset {
+  border: none;
+}
+.mailform * {
+  box-sizing: border-box;
+}
+
+.mailform label {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-top: 15px;
+  font-size: 15px;
+}
+.mailform label:first-child {
+  margin-top: 15px;
+}
+@media (min-width: 1170px) {
+  .mailform label:first-child input {
+    margin-left: 40px;
+  }
+}
+.mailform label input, .mailform label select, .mailform label textarea {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  -webkit-appearance: none;
+  outline: none;
+  font-family: "Hind", sans-serif;
+  font-size: 14px;
+  padding: 17px 16px 3px;
+  line-height: 20px;
+  border-bottom: 1px solid #e7e2ce;
+  color: #90a4ae;
+  vertical-align: bottom;
+}
+@media (min-width: 1170px) {
+  .mailform label input, .mailform label select, .mailform label textarea {
+    width: 64%;
+    margin-left: 37px;
+  }
+}
+.mailform label input:-moz-placeholder, .mailform label select:-moz-placeholder, .mailform label textarea:-moz-placeholder {
+  color: #90a4ae;
+  opacity: 1;
+}
+.mailform label input::-webkit-input-placeholder, .mailform label select::-webkit-input-placeholder, .mailform label textarea::-webkit-input-placeholder {
+  color: #90a4ae;
+  opacity: 1;
+}
+.mailform label input::-moz-placeholder, .mailform label select::-moz-placeholder, .mailform label textarea::-moz-placeholder {
+  color: #90a4ae;
+  opacity: 1;
+}
+.mailform label input:-ms-input-placeholder, .mailform label select:-ms-input-placeholder, .mailform label textarea:-ms-input-placeholder {
+  color: #90a4ae;
+  opacity: 1;
+}
+.mailform label textarea {
+  resize: vertical;
+  overflow: auto;
+  height: 212px;
+}
+@media (max-width: 1365px) {
+  .mailform label {
+    margin-top: 30px;
+  }
+}
+
+@-ms-keyframes fout {
+  0% {
+    -ms-transform: scale(1) translateX(0);
+        transform: scale(1) translateX(0);
+  }
+  100% {
+    -ms-transform: scale(0) translateX(0);
+        transform: scale(0) translateX(0);
+  }
+}
+@-webkit-keyframes fout {
+  0% {
+    -webkit-transform: scale(1) translateX(0);
+            transform: scale(1) translateX(0);
+  }
+  100% {
+    -webkit-transform: scale(0) translateX(0);
+            transform: scale(0) translateX(0);
+  }
+}
+@keyframes fout {
+  0% {
+    -webkit-transform: scale(1) translateX(0);
+            transform: scale(1) translateX(0);
+  }
+  100% {
+    -webkit-transform: scale(0) translateX(0);
+            transform: scale(0) translateX(0);
+  }
+}
+/* Mail Form PlaceHolder
+========================================================*/
+.placeholder-variant-1 {
+  display: none;
+}
+@media (min-width: 992px) {
+  .placeholder-variant-1 {
+    display: inline-block;
+    padding-top: 17px;
+  }
+}
+
+.mfPlaceHolder {
+  font: inherit;
+  cursor: text;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 17px 16px 3px;
+  line-height: 20px;
+  color: #90a4ae;
+  opacity: 1;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+*:-webkit-autofill ~ .mfPlaceHolder {
+  opacity: .4;
+  -ms-transform: translateY(-80%);
+  -webkit-transform: translateY(-80%);
+  transform: translateY(-80%);
+}
+.mfPlaceHolder.state-1 {
+  opacity: .4;
+  -ms-transform: translateY(-70%);
+  -webkit-transform: translateY(-70%);
+  transform: translateY(-70%);
+}
+@media (min-width: 992px) {
+  .mfPlaceHolder {
+    display: none;
+  }
+}
+
+/*
+* @subsection Mail Form Validation
+*/
+.mfValidation {
+  -ms-transform-origin: 0% 50%;
+  -webkit-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+  border-radius: 5px;
+  position: absolute;
+  bottom: -64%;
+  right: 0;
+  margin-top: -20px;
+  margin-left: 10px;
+  padding: 7px;
+  height: 35px;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 20px;
+  color: #AA0000;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+  z-index: 998;
+  text-align: right;
+}
+.mfValidation:before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 5px 4px 0;
+  border-color: transparent #111 transparent transparent;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+.mfValidation:hover:before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 5px 4px 0;
+  border-color: transparent #231634 transparent transparent;
+}
+.mfValidation.show {
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  -webkit-animation: notifanim 0.4s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+  -ms-animation: notifanim 0.4s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+  animation: notifanim 0.4s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+}
+.mfValidation.hide {
+  -webkit-animation: notifanim-fo 0.4s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+  -ms-animation: notifanim-fo 0.4s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+  animation: notifanim-fo 0.4s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+}
+.mfValidation.valid {
+  opacity: 0;
+  visibility: hidden;
+}
+.mfValidation:before {
+  display: none;
+}
+
+@-ms-keyframes notifanim-fo {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    -ms-transform: scale(1);
+        transform: scale(1);
+  }
+  20% {
+    opacity: 1;
+    -ms-transform: scale(1.1);
+        transform: scale(1.1);
+  }
+  99% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: hidden;
+    -ms-transform: scale(0.3);
+        transform: scale(0.3);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes notifanim-fo {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  20% {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  99% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: hidden;
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+    opacity: 0;
+  }
+}
+@keyframes notifanim-fo {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  20% {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  99% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: hidden;
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+    opacity: 0;
+  }
+}
+@-ms-keyframes notifanim {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    -ms-transform: scale(0.3);
+        transform: scale(0.3);
+  }
+  1% {
+    visibility: visible;
+  }
+  50% {
+    -ms-transform: scale(1);
+        transform: scale(1);
+  }
+  75% {
+    -ms-transform: scale(0.9);
+        transform: scale(0.9);
+  }
+  100% {
+    -ms-transform: scale(1);
+        transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes notifanim {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+  }
+  1% {
+    visibility: visible;
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes notifanim {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+  }
+  1% {
+    visibility: visible;
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+/* MF Controls
+========================================================*/
+.mfControls {
+  margin-top: 29px;
+  word-spacing: 10px;
+  text-align: center;
+}
+@media (min-width: 992px) {
+  .mfControls {
+    -webkit-transform: translateX(6%);
+        -ms-transform: translateX(6%);
+            transform: translateX(6%);
+  }
+}
+.mfControls > * {
+  word-spacing: normal;
+  margin-bottom: 5px;
+}
+
+/* Mail Form Submit
+========================================================*/
+.mfProgress {
+  position: relative;
+}
+.mfProgress .cnt, .mfProgress .loader {
+  position: relative;
+  z-index: 1;
+  -webkit-transition: 0.4s all ease-in-out;
+  transition: 0.4s all ease-in-out;
+}
+.mfProgress .loader {
+  opacity: 0;
+  text-align: center;
+  letter-spacing: 10px;
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.mfProgress .loader, .mfProgress .loader:before, .mfProgress .loader:after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  margin: auto;
+}
+.mfProgress .loader:before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.mfProgress .loader:after {
+  content: '';
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  font: 400 30px "FontAwesome";
+  line-height: inherit;
+  -webkit-transition: 0.4s all ease-in-out;
+  transition: 0.4s all ease-in-out;
+  -ms-transform: scale(0) rotate(-60deg);
+  -webkit-transform: scale(0) rotate(-60deg);
+  transform: scale(0) rotate(-60deg);
+}
+.mfProgress.sending .cnt, .mfProgress.fail .cnt, .mfProgress.success .cnt {
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  opacity: 0;
+}
+.mfProgress.sending .loader, .mfProgress.fail .loader, .mfProgress.success .loader {
+  opacity: 1;
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.mfProgress.fail .loader:before, .mfProgress.success .loader:before {
+  -webkit-animation: fout 0.4s ease-in-out 1 forwards;
+  -ms-animation: fout 0.4s ease-in-out 1 forwards;
+  animation: fout 0.4s ease-in-out 1 forwards;
+}
+.mfProgress.fail .loader:after, .mfProgress.success .loader:after {
+  -ms-transform: scale(1) rotate(0deg);
+  -webkit-transform: scale(1) rotate(0deg);
+  transform: scale(1) rotate(0deg);
+}
+.mfProgress.sending .loader:before {
+  -webkit-animation: motion 3s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  -ms-animation: motion 3s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  animation: motion 3s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+.mfProgress.fail .loader:after {
+  content: '\f06a';
+}
+.mfProgress.success .loader:after {
+  content: '\f058';
+}
+
+.mfProgress .msg {
+  -ms-transform-origin: 0% 50%;
+  -webkit-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+  -webkit-animation: notifanim-fo 0.4s ease-in-out forwards;
+  -ms-animation: notifanim-fo 0.4s ease-in-out forwards;
+  animation: notifanim-fo 0.4s ease-in-out forwards;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
+  position: absolute;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 20px;
+  opacity: 0;
+  visibility: hidden;
+  top: 100%;
+  left: 50%;
+  width: 230px;
+  margin-left: -115px;
+  margin-top: 20px;
+  color: #fff;
+  -ms-transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+.mfProgress .msg:before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  right: 50%;
+  -webkit-transform: translate(50%, 0%);
+      -ms-transform: translate(50%, 0%);
+          transform: translate(50%, 0%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent #111 transparent;
+  -webkit-transition: 0.4s all ease-in-out;
+  transition: 0.4s all ease-in-out;
+}
+.mfProgress.fail .msg, .mfProgress.success .msg {
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  -webkit-animation: notifanim 0.4s ease-in-out forwards;
+  -ms-animation: notifanim 0.4s ease-in-out forwards;
+  animation: notifanim 0.4s ease-in-out forwards;
+}
+.mfProgress.fail .msg {
+  background: #F44336;
+}
+.mfProgress.fail .msg:before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent #F44336 transparent;
+}
+.mfProgress.success .msg {
+  background: #2E7D32;
+}
+.mfProgress.success .msg:before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent #2E7D32 transparent;
+}
+
+@-ms-keyframes motion {
+  0% {
+    -ms-transform: translateX(0) scale(1);
+        transform: translateX(0) scale(1);
+  }
+  25% {
+    -ms-transform: translateX(-50px) scale(0.3);
+        transform: translateX(-50px) scale(0.3);
+  }
+  50% {
+    -ms-transform: translateX(0) scale(1);
+        transform: translateX(0) scale(1);
+  }
+  75% {
+    -ms-transform: translateX(50px) scale(0.3);
+        transform: translateX(50px) scale(0.3);
+  }
+  100% {
+    -ms-transform: translateX(0) scale(1);
+        transform: translateX(0) scale(1);
+  }
+}
+@-webkit-keyframes motion {
+  0% {
+    -webkit-transform: translateX(0) scale(1);
+            transform: translateX(0) scale(1);
+  }
+  25% {
+    -webkit-transform: translateX(-50px) scale(0.3);
+            transform: translateX(-50px) scale(0.3);
+  }
+  50% {
+    -webkit-transform: translateX(0) scale(1);
+            transform: translateX(0) scale(1);
+  }
+  75% {
+    -webkit-transform: translateX(50px) scale(0.3);
+            transform: translateX(50px) scale(0.3);
+  }
+  100% {
+    -webkit-transform: translateX(0) scale(1);
+            transform: translateX(0) scale(1);
+  }
+}
+@keyframes motion {
+  0% {
+    -webkit-transform: translateX(0) scale(1);
+            transform: translateX(0) scale(1);
+  }
+  25% {
+    -webkit-transform: translateX(-50px) scale(0.3);
+            transform: translateX(-50px) scale(0.3);
+  }
+  50% {
+    -webkit-transform: translateX(0) scale(1);
+            transform: translateX(0) scale(1);
+  }
+  75% {
+    -webkit-transform: translateX(50px) scale(0.3);
+            transform: translateX(50px) scale(0.3);
+  }
+  100% {
+    -webkit-transform: translateX(0) scale(1);
+            transform: translateX(0) scale(1);
+  }
+}
