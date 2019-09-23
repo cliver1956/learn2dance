@@ -13,6 +13,7 @@
 
   <script src="js/jquery.js"></script>
   <script src="js/jquery-migrate-1.2.1.js"></script>
+  <?php include("/home/u659589027/domains/learn2dancesandy.co.uk/public_html/blog/SimpleBlogPHP/meta.php"); ?>
   
   <!-- Open Graph Data -->
   <meta property="og:title" content="Learn to Dance Sandy Blog Post" />
@@ -97,7 +98,7 @@
              <div id="blog">
                <h2>Blog Posts</h2>
 
-               <?php include("/SimpleBlogPHP/blog.php"); ?>
+               <?php include("/home/u659589027/domains/learn2dancesandy.co.uk/public_html/blog/SimpleBlogPHP/blog.php"); ?>
 
 
              </div>
